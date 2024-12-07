@@ -1,10 +1,6 @@
 #ifndef ARENA_H_
 #define ARENA_H_
 
-#ifndef ARENA_INITIAL_CAPACITY
-#define ARENA_INITIAL_CAPACITY 0x100
-#endif
-
 #include <stdlib.h>
 
 typedef struct {
