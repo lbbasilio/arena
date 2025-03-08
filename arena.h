@@ -1,4 +1,4 @@
-// Simple arena allocator - v1.0
+// Simple arena allocator - v1.1
 
 #ifndef ARENA_H_
 #define ARENA_H_
@@ -46,8 +46,9 @@ void* arena_alloc(Arena* arena, size_t bytes)
 	if (bytes > arena->capacity - (arena->head - arena->base))
 		return NULL;
 
+	void* ptr = arena->head;
 	arena->head += bytes;
-	return arena->head;
+	return ptr;
 }
 
 unsigned char* arena_checkpoint(Arena* arena)
