@@ -1,4 +1,4 @@
-// Simple arena allocator - v1.1
+// Simple arena allocator - v1.2
 
 #ifndef ARENA_H_
 #define ARENA_H_
