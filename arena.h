@@ -71,7 +71,8 @@ void* arena_realloc(Arena* arena, void* ptr, size_t current, size_t target)
 
 	arena->last = arena->head;
 	arena->head += target;
-	memcpy(arena->last, ptr, current);
+	if (ptr != NULL && current > 0)
+		memcpy(arena->last, ptr, current);
 	return arena->last;
 }
 
