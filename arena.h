@@ -1,4 +1,4 @@
-// Simple arena allocator - v1.2
+// Simple arena allocator - v1.3
 
 #ifndef ARENA_H_
 #define ARENA_H_
@@ -14,6 +14,7 @@ typedef struct {
 } Arena;
 
 Arena arena_create(size_t capacity);
+Arena arena_from_buffer(unsigned char* buffer, size_t capacity);
 void* arena_alloc(Arena* arena, size_t bytes);
 void* arena_realloc(Arena* arena, void* ptr, size_t current, size_t target);
 unsigned char* arena_checkpoint(Arena* arena);
@@ -35,6 +36,16 @@ Arena arena_create(size_t capacity)
 		.base = ptr,
 		.head = ptr,
 		.last = ptr
+	};
+}
+
+Arena arena_from_buffer(unsigned char* buffer, size_t capacity)
+{
+	return (Arena) {
+		.capacity = capacity,
+		.base = buffer,
+		.head = buffer,
+		.last = buffer
 	};
 }
 
